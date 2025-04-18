@@ -1,0 +1,33 @@
+---
+import Social from './Social.astro';
+---
+
+<footer>
+	<hr />
+	<p>
+		<small>Footer starts here</small>
+	</p>
+	<br />
+	<ul>
+		<li>
+			<Social platform="twitter" username="astrodotbuild" />
+		</li>
+		<li>
+			<Social platform="github" username="withastro" />
+		</li>
+		<li>
+			<Social platform="youtube" username="astrodotbuild" />
+		</li>
+	</ul>
+	<script>
+		import '../scripts/menu.js';
+	</script>
+</footer>
+
+<style>
+	ul {
+		display: flex;
+		gap: 1rem;
+		list-style: none;
+	}
+</style>
