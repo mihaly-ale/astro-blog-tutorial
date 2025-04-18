@@ -1,0 +1,93 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const pageTitle = 'About me';
+const identity = {
+	firstName: 'Sarah',
+	country: 'Canada',
+	occupation: 'Technical Writer',
+	hobbies: ['photography', 'birdwatching', 'baseball'],
+};
+
+// Mapping skills
+const skills = ['HTML', 'CSS', 'JavaScript', 'React', 'Astro', 'Writing Docs'];
+
+// CSS variables
+const skillColor = 'slateblue';
+const fontWeight = 'bold';
+const textCase = 'uppercase';
+
+// conditional rendering
+const happy = true;
+const finished = false;
+const goal = 3;
+---
+
+<BaseLayout pageTitle={pageTitle}>
+	<h2>... and my new Astro site!</h2>
+	<p>Here are a few facts about me:</p>
+	<ul>
+		<li>My name is {identity.firstName}.</li>
+		<li>
+			I live in {identity.country} and I work as a {identity.occupation}.
+		</li>
+		{
+			identity.hobbies.length >= 2 && (
+				<li>
+					Two of my hobbies are: {identity.hobbies[0]} and {identity.hobbies[1]}
+				</li>
+			)
+		}
+	</ul>
+	<p>My skills are:</p>
+	<ul>
+		{skills.map((skill) => <li class="skill">{skill}</li>)}
+	</ul>
+
+	<p>
+		I am working through Astro's introductory tutorial. This is the second page
+		on my website, and it's the first one I built myself!
+	</p>
+
+	<p>
+		This site will update as I complete more of the tutorial, so keep checking
+		back and see how my journey is going!
+	</p>
+	<hr />
+	<h3>Conditional rendering</h3>
+	{happy && <p>I am happy to be learning Astro!</p>}
+
+	{finished && <p>I finished this tutorial!</p>}
+
+	{
+		goal === 3 ? (
+			<p>My goal is to finish in 3 days.</p>
+		) : (
+			<p>My goal is not 3 days.</p>
+		)
+	}
+</BaseLayout>
+
+<style define:vars={{ skillColor, fontWeight, textCase }}>
+	h1 {
+		color: purple;
+		font-size: 4rem;
+		text-transform: var(--textCase);
+	}
+	ul {
+		display: inline-block;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 0.5em;
+	}
+	.skill {
+		background-color: var(--skillColor);
+		color: white;
+		font-weight: var(--fontWeight);
+		padding: 0.25em 0.35em;
+	}
+	.skill::marker {
+		color: purple;
+	}
+</style>
